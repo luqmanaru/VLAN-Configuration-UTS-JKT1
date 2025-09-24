@@ -1,0 +1,44 @@
+Router>enable
+Router#configure terminal
+Router(config)#hostname R-UTS
+R-UTS(config)#interface GigabitEthernet0/0
+R-UTS(config-if)#no shutdown
+R-UTS(config-if)#exit
+R-UTS(config)#interface GigabitEthernet0/0.10
+R-UTS(config-subif)#encapsulation dot1Q 10
+R-UTS(config-subif)#ip address 192.168.10.1 255.255.255.0
+R-UTS(config-subif)#exit
+R-UTS(config)#interface GigabitEthernet0/0.20
+R-UTS(config-subif)#encapsulation dot1Q 20
+R-UTS(config-subif)#ip address 192.168.20.1 255.255.255.0
+R-UTS(config-subif)#exit
+R-UTS(config)#interface GigabitEthernet0/0.30
+R-UTS(config-subif)#encapsulation dot1Q 30
+R-UTS(config-subif)#ip address 192.168.30.1 255.255.255.0
+R-UTS(config-subif)#exit
+R-UTS(config)#interface GigabitEthernet0/0.40
+R-UTS(config-subif)#encapsulation dot1Q 40
+R-UTS(config-subif)#ip address 192.168.40.1 255.255.255.0
+R-UTS(config-subif)#exit
+R-UTS(config)#interface GigabitEthernet0/0.50
+R-UTS(config-subif)#encapsulation dot1Q 50
+R-UTS(config-subif)#ip address 192.168.50.1 255.255.255.0
+R-UTS(config-subif)#exit
+R-UTS(config)#interface GigabitEthernet0/0.60
+R-UTS(config-subif)#encapsulation dot1Q 60
+R-UTS(config-subif)#ip address 192.168.60.1 255.255.255.0
+R-UTS(config-subif)#exit
+R-UTS(config)#ip dhcp pool VLAN20
+R-UTS(dhcp-config)#network 192.168.20.0 255.255.255.0
+R-UTS(dhcp-config)#default-router 192.168.20.1
+R-UTS(dhcp-config)#dns-server 8.8.8.8
+R-UTS(dhcp-config)#exit
+R-UTS(config)#ip dhcp pool VLAN30
+R-UTS(dhcp-config)#network 192.168.30.0 255.255.255.0
+R-UTS(dhcp-config)#default-router 192.168.30.1
+R-UTS(dhcp-config)#dns-server 8.8.8.8
+R-UTS(dhcp-config)#exit
+R-UTS(config)#ip dhcp excluded-address 192.168.20.1
+R-UTS(config)#ip dhcp excluded-address 192.168.30.1
+R-UTS(config)#exit
+R-UTS#write memory
