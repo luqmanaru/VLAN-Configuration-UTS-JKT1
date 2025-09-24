@@ -1,0 +1,37 @@
+Switch>enable
+Switch#configure terminal
+Switch(config)#hostname SW-5
+SW-5(config)#vlan 10
+SW-5(config-vlan)#name Marketing
+SW-5(config-vlan)#exit
+SW-5(config)#vlan 20
+SW-5(config-vlan)#name Sales
+SW-5(config-vlan)#exit
+SW-5(config)#vlan 50
+SW-5(config-vlan)#name Research
+SW-5(config-vlan)#exit
+SW-5(config)#vlan 60
+SW-5(config-vlan)#name Development
+SW-5(config-vlan)#exit
+SW-5(config)#interface range fa0/1-2
+SW-5(config-if-range)#switchport mode trunk
+SW-5(config-if-range)#switchport trunk allowed vlan all
+SW-5(config-if-range)#exit
+SW-5(config)#interface range fa0/3-7
+SW-5(config-if-range)#switchport mode access
+SW-5(config-if-range)#switchport access vlan 10
+SW-5(config-if-range)#exit
+SW-5(config)#interface range fa0/8-13
+SW-5(config-if-range)#switchport mode access
+SW-5(config-if-range)#switchport access vlan 20
+SW-5(config-if-range)#exit
+SW-5(config)#interface range fa0/14-18
+SW-5(config-if-range)#switchport mode access
+SW-5(config-if-range)#switchport access vlan 50
+SW-5(config-if-range)#exit
+SW-5(config)#interface range fa0/19-24
+SW-5(config-if-range)#switchport mode access
+SW-5(config-if-range)#switchport access vlan 60
+SW-5(config-if-range)#exit
+SW-5(config)#exit
+SW-5#write memory
